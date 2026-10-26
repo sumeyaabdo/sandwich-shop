@@ -19,14 +19,26 @@ public class SandwichShop {
                 2, Large: base price $8.95
                 Choose 1 or 2""");
         int size = scanner.nextInt();
+        System.out.println("Do you want your sandwich loaded? (yes/no)");
+        String loaded = scanner.next();
 
         double price = 0;
         if (size == 1) {
             price = regularPrice;
         } else if (size == 2) {
             price = largePrice;
-        } else
+        } else {
             System.out.println("Sorry, invalid size!");
+            return;
+        }
+
+        if (loaded.equalsIgnoreCase("yes")) {
+            if (size == 1) {
+                price = price + 1.00;
+            } else if (size == 2) {
+                price = price + 1.75;
+            }
+        }
 
         // Asking for the Age
         System.out.println("How old are you?");
@@ -39,8 +51,6 @@ public class SandwichShop {
         }
 
         System.out.printf("%s Your sandwich total is $%.2f%n",name, price);
-
-
 
     }
 }
